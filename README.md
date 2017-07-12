@@ -3,12 +3,25 @@
 Simple python code to randomly sample points with a uniform distribution over a sphere.
 Makes use of inverse transform sampling.
 
+This is useful, for example, for performing spherical Monte Carlo integrations.
+
+
+**Usage:**
+
+e.g., to place the output in a text file (that can be read by a plotting program):
+
+$ python randUniSphere.py >> test.out
+
+It uses 150 points, this is hard-coded in, but can be changed simply.
+
+
 **Inverse transform sampling:**
+
 We want to randomly sample points from a given distribution, p(x).
 What I mean by this, is that if I histogram the points that I sample, they histogram should match the p(x) distribution.
 To do this, define:
 
-C(x) = Integrate p(x') dx' ; -Infinity to x
+C(x) = Integrate p(x') dx' ; -Infinity -> x
 
 let g(u) = C^-1(u)    [C^-1 is the inverse of C, NOT 1/C !]
 
@@ -33,7 +46,3 @@ u: sampled uniformly from [0,1]
 
 theta=g(u) : sampled according to p(theta)
 
-**Usage:**
-e.g., to place the output in a text file (that can be read by a plotting program):
-
-python randUniSphere.py >> test.out
