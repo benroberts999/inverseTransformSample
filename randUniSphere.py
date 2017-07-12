@@ -17,25 +17,6 @@ def y(i):
 def z(i):
     return math.cos(theta_lst[i])
 xyz_lst=[(x(i),y(i),z(i)) for i in range (num_points)]
-#print(xyz_lst)
-
 
 for i in range (num_points):
 	print x(i), y(i), z(i)
-
-# Native Mathematica input form
-#for i in range (num_points):
-#	print '{',x(i),',',y(i),',',z(i),'}',','
-
-
-
-
-
-
-
-
-
-
-
-
-
