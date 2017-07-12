@@ -1,9 +1,17 @@
 # Randomly sample points with a uniform distribution over a sphere
 
+
 Simple python code to randomly sample points with a uniform distribution over a sphere.
 Makes use of inverse transform sampling.
 
 This is useful, for example, for performing spherical Monte Carlo integrations.
+
+Also, the same thing is done using Mathematica.
+The Mathematica notebook will also plot the output of the python script.
+Mathematica is proprotry software, so without a licence, you cannot run the notebook.
+However, you can download the free "CDF player", which will allow you to see the formatted contents of the notebook (though won't let you run the code). It can be downloaded here:  
+http://www.wolfram.com/cdf-player/  
+
 
 
 **Usage:**
@@ -12,7 +20,8 @@ e.g., to place the output in a text file (that can be read by a plotting program
 
 $ python randUniSphere.py >> test.out
 
-It uses 150 points, this is hard-coded in, but can be changed simply.
+It uses 150 points, this is hard-coded in, but can be changed simply.  
+
 
 
 **Inverse transform sampling:**
@@ -23,10 +32,12 @@ To do this, define:
 
 C(x) = Integrate p(x') dx' ; -Infinity -> x
 
-let g(u) = C^-1(u)    [C^-1 is the inverse of C, NOT 1/C !]
+let g(u) = C^-1(u)    [C^-1 is the inverse of C, NOT 1/C !]  
+
 
 If we then have a set of uniformly samped points {u},
-the set {g(u)} will follow the probability distribution set by p(x)!
+the set {g(u)} will follow the probability distribution set by p(x)!  
+
 
 In our case, the probability distributions we want is the spherical solid-angle volume element
 
