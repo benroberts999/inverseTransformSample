@@ -1,0 +1,260 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8397,        251]
+NotebookOptionsPosition[      7633,        222]
+NotebookOutlinePosition[      7969,        237]
+CellTagsIndexPosition[      7926,        234]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Randomly distribute points according to a Gaussian distribution, using \
+inverse transform sampling.\
+\>", "Subsection",
+ CellChangeTimes->{{3.708963642348316*^9, 3.708963644899942*^9}, {
+  3.711458334046617*^9, 3.711458345476203*^9}}],
+
+Cell["Target probability density function, P, is a usual Gaussian:", "Text",
+ CellChangeTimes->{{3.711458353956477*^9, 3.7114583720274057`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{"x_", ",", "x0_", ",", "\[Sigma]_"}], "]"}], ":=", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"2", "\[Pi]"}], "]"}], "\[Sigma]"}]], 
+   RowBox[{"Exp", "[", 
+    FractionBox[
+     RowBox[{"-", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"x", "-", "x0"}], ")"}], "2"]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["\[Sigma]", "2"]}]], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.708963637280534*^9, 3.708963708793206*^9}, 
+   3.7113740251314583`*^9}],
+
+Cell["Find the CDF (cumulative probability distribution):", "Text",
+ CellChangeTimes->{{3.7114583845711823`*^9, 3.711458399066684*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c", "[", "x_", "]"}], ":=", 
+  RowBox[{"FullSimplify", "[", 
+   RowBox[{
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"P", "[", 
+       RowBox[{"y", ",", "x0", ",", "\[Sigma]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "Infinity"}], ",", "x"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Sigma]", ">", "0"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{"c", "[", "x", "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Just", " ", "to", " ", "output", " ", "the", " ", "answer", " ", "CDF"}], 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.708963747039373*^9, 3.7089637901509447`*^9}, {
+   3.711373274816114*^9, 3.711373277487782*^9}, 3.711374043953689*^9, {
+   3.711458539868531*^9, 3.711458557300949*^9}, {3.71145885919646*^9, 
+   3.7114588793789053`*^9}}],
+
+Cell["Find the inverse:", "Text",
+ CellChangeTimes->{{3.7114584044662027`*^9, 3.7114584077944508`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sol", "=", 
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"c", "[", "x", "]"}], "\[Equal]", "u"}], ",", "x"}], "]"}]}], 
+   ";"}], "//", "Quiet"}], "\[IndentingNewLine]", 
+ RowBox[{"g", "=", 
+  RowBox[{"x", "/.", 
+   RowBox[{"sol", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.7089640242291193`*^9, 3.708964043367468*^9}, {
+  3.7113733037578773`*^9, 3.711373306286168*^9}, {3.711373356389736*^9, 
+  3.711373357971758*^9}, {3.711374069328124*^9, 3.7113740766710157`*^9}, {
+  3.711458607649117*^9, 3.71145860783316*^9}}],
+
+Cell[TextData[{
+ StyleBox["An example, for Gaussian with ", "Subsubsection"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "0"], "=", " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["x", 
+       RowBox[{"1", ",", " "}]], "and", " ", "\[Sigma]"}], "=", 
+     SubscriptBox["\[Sigma]", "1"]}]}], TraditionalForm]], "Subsubsection",
+  FormatType->"TraditionalForm"], "Subsubsection"]
+}], "Text",
+ CellChangeTimes->{{3.711458757873228*^9, 3.711458800947111*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x1", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]1", "=", "1.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numPoints", "=", "10000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"u", ":=", 
+  RowBox[{"RandomReal", "[", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1"}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xlst", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"g", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x0", "\[Rule]", "x1"}], ",", 
+        RowBox[{"\[Sigma]", "\[Rule]", "\[Sigma]1"}]}], "}"}]}], ",", 
+     RowBox[{"{", "numPoints", "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7089641375156317`*^9, 3.70896421196521*^9}, {
+   3.708964707400647*^9, 3.708964717560193*^9}, 3.708964786856449*^9, 
+   3.71137400576775*^9, {3.711374087927331*^9, 3.711374088374423*^9}, {
+   3.711458576834216*^9, 3.711458594406349*^9}, {3.711458643147347*^9, 
+   3.711458688030588*^9}, {3.711458803411139*^9, 3.711458844594859*^9}}],
+
+Cell[TextData[StyleBox["Plot a histogram of the generated points, along with \
+the \[OpenCurlyDoubleQuote]target\[CloseCurlyDoubleQuote] Gaussian PDF, to \
+show that it works:", "Subsubsection"]], "Text",
+ CellChangeTimes->{{3.711458426449535*^9, 3.711458449480891*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"Histogram", "[", 
+    RowBox[{"xlst", ",", "100", ",", "\"\<PDF\>\""}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"P", "[", 
+      RowBox[{"x", ",", "x0test", ",", "\[Sigma]test"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"x1", "-", 
+        RowBox[{"3", "\[Sigma]1"}]}], ",", 
+       RowBox[{"x1", "+", 
+        RowBox[{"3", "\[Sigma]1"}]}]}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.708964197179099*^9, 3.708964318645932*^9}, 
+   3.711374105594015*^9, {3.711458691817976*^9, 3.7114587187518883`*^9}, {
+   3.711458810819921*^9, 3.711458816342188*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+This part reads in the output file from the python script and plots it:\
+\>", "Subsubsection",
+ CellChangeTimes->{3.711472315335923*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Reads", " ", "in", " ", "the", " ", 
+    RowBox[{"file", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"outFileName", "=", "\"\<gaus.out\>\""}], ";", 
+    RowBox[{"(*", 
+     RowBox[{
+     "Name", " ", "of", " ", "the", " ", "python", " ", "output", " ", 
+      "file"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Set", " ", "paths", " ", "relative", " ", "to", " ", "current", " ", 
+     "dir"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pyList", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{"\"\<./\>\"", "<>", "outFileName"}], ",", "\"\<List\>\""}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Plots", " ", "the", " ", 
+     RowBox[{"points", ":"}]}], "*)"}], "\n", 
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Histogram", "[", 
+      RowBox[{"pyList", ",", "100", ",", "\"\<PDF\>\""}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"P", "[", 
+        RowBox[{"x", ",", "5.", ",", "1.5"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "10"}], "}"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.711472320624578*^9, 3.7114723592453537`*^9}, {
+  3.711472405231739*^9, 3.711472446308956*^9}, {3.711472556998914*^9, 
+  3.711472628388405*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{237, Automatic}, {206, Automatic}},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 245, 5, 71, "Subsection"],
+Cell[828, 29, 144, 1, 33, "Text"],
+Cell[975, 32, 566, 18, 62, "Input"],
+Cell[1544, 52, 135, 1, 33, "Text"],
+Cell[1682, 55, 898, 24, 77, "Input"],
+Cell[2583, 81, 103, 1, 33, "Text"],
+Cell[2689, 84, 625, 16, 55, "Input"],
+Cell[3317, 102, 485, 13, 42, "Text"],
+Cell[3805, 117, 1053, 25, 121, "Input"],
+Cell[4861, 144, 270, 3, 63, "Text"],
+Cell[5134, 149, 736, 19, 77, "Input"],
+Cell[CellGroupData[{
+Cell[5895, 172, 146, 3, 35, "Subsubsection"],
+Cell[6044, 177, 1561, 41, 231, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
