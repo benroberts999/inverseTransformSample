@@ -42,9 +42,9 @@ Makes use of inverse transform sampling.
 
 e.g., to place the output in a text file (that can be read by a plotting program):
 
-$ python sampleFromGaussian.py >> test.out
+$ python sampleFromGaussian.py >> gaus.out
 
-It uses 150 points, this is hard-coded in, but can be changed simply.  
+It uses 5000 points, this is hard-coded in, but can be changed simply.  
 
 
 ## Inverse transform sampling:
