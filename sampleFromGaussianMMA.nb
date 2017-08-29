@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8397,        251]
-NotebookOptionsPosition[      7633,        222]
-NotebookOutlinePosition[      7969,        237]
-CellTagsIndexPosition[      7926,        234]
+NotebookDataLength[      8787,        260]
+NotebookOptionsPosition[      8023,        231]
+NotebookOutlinePosition[      8359,        246]
+CellTagsIndexPosition[      8316,        243]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -156,7 +156,7 @@ Cell[BoxData[
    RowBox[{"Plot", "[", 
     RowBox[{
      RowBox[{"P", "[", 
-      RowBox[{"x", ",", "x0test", ",", "\[Sigma]test"}], "]"}], ",", 
+      RowBox[{"x", ",", "x1", ",", "\[Sigma]1"}], "]"}], ",", 
      RowBox[{"{", 
       RowBox[{"x", ",", 
        RowBox[{"x1", "-", 
@@ -166,7 +166,8 @@ Cell[BoxData[
   "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->{{3.708964197179099*^9, 3.708964318645932*^9}, 
    3.711374105594015*^9, {3.711458691817976*^9, 3.7114587187518883`*^9}, {
-   3.711458810819921*^9, 3.711458816342188*^9}}],
+   3.711458810819921*^9, 3.711458816342188*^9}, {3.713021388522456*^9, 
+   3.713021422972344*^9}}],
 
 Cell[CellGroupData[{
 
@@ -182,13 +183,13 @@ Cell[BoxData[
     RowBox[{"file", ":"}]}], "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"outFileName", "=", "\"\<gaus.out\>\""}], ";", 
-    RowBox[{"(*", 
-     RowBox[{
-     "Name", " ", "of", " ", "the", " ", "python", " ", "output", " ", 
-      "file"}], "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"SetDirectory", "[", 
-     RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], " ", 
+    RowBox[{"outFileName", "=", "\"\<gaus.out\>\""}], ";"}], 
+   RowBox[{"(*", 
+    RowBox[{
+    "Name", " ", "of", " ", "the", " ", "python", " ", "output", " ", 
+     "file"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], " ", 
    RowBox[{"(*", 
     RowBox[{
     "Set", " ", "paths", " ", "relative", " ", "to", " ", "current", " ", 
@@ -213,15 +214,23 @@ Cell[BoxData[
         RowBox[{"x", ",", "5.", ",", "1.5"}], "]"}], ",", 
        RowBox[{"{", 
         RowBox[{"x", ",", "0", ",", "10"}], "}"}]}], "]"}]}], 
-    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"nb", ":", " ", 
+      RowBox[{"in", " ", "the", " ", "python", " ", "script"}]}], ",", " ", 
+     RowBox[{
+      SubscriptBox["x", "0"], "=", "5"}], ",", " ", 
+     RowBox[{
+      RowBox[{"and", " ", "\[Sigma]"}], "=", "1.5"}]}], "*)"}]}]}]], "Input",
  CellChangeTimes->{{3.711472320624578*^9, 3.7114723592453537`*^9}, {
   3.711472405231739*^9, 3.711472446308956*^9}, {3.711472556998914*^9, 
-  3.711472628388405*^9}}]
+  3.711472628388405*^9}, {3.713021450866658*^9, 3.713021476447296*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{808, 911},
-WindowMargins->{{237, Automatic}, {206, Automatic}},
+WindowMargins->{{570, Automatic}, {Automatic, 134}},
 FrontEndVersion->"10.0 for Linux x86 (64-bit) (June 27, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -247,10 +256,10 @@ Cell[2689, 84, 625, 16, 55, "Input"],
 Cell[3317, 102, 485, 13, 42, "Text"],
 Cell[3805, 117, 1053, 25, 121, "Input"],
 Cell[4861, 144, 270, 3, 63, "Text"],
-Cell[5134, 149, 736, 19, 77, "Input"],
+Cell[5134, 149, 779, 20, 77, "Input"],
 Cell[CellGroupData[{
-Cell[5895, 172, 146, 3, 35, "Subsubsection"],
-Cell[6044, 177, 1561, 41, 231, "Input"]
+Cell[5938, 173, 146, 3, 35, "Subsubsection"],
+Cell[6087, 178, 1908, 49, 253, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
